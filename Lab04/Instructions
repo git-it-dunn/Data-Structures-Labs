@@ -1,0 +1,123 @@
+# Lab 04 - Linked Lists
+
+_**Note:** Files already exist for the following classes:
+- `src/main/java/Warrior.java`
+- `src/main/java/Lab04.java`
+- `src/main/java/LinkedList.java`
+- `src/main/java/SortedDoublyLinkedList.java`_
+
+## Overview
+In this lab assignment, we will create a sorted doubly-linked list class, and use that class to implement the outline of a speed-priority battle system.
+
+## Instructions
+Our battle game needs to support warriors of different speeds properly. A priority queue seems like an
+appropriate data structure for the task, but you haven't covered that yet in your computer science
+courses. Let's try to implement a basic doubly-linked list that implements a priority system by sorting the elements that are inserted by their `speed`.
+
+_**Hint:** We developed a singly-linked list in the lectures. It is recommended that you use this as your starting point._
+
+The driver code that follows can be used to test your linked list:
+```
+public class Lab04 {
+    public static void main(String[] args) {
+        LinkedList list = new SortedDoublyLinkedList();
+        System.out.println(list);
+
+        Warrior karth = new Warrior("Karth", 30, 50, 200);
+        list.insert(karth);
+        System.out.println(list);
+
+        Warrior gurkh = new Warrior("Gurkh", 40, 45, 180);
+        list.insert(gurkh);
+        System.out.println(list);
+
+        Warrior brynn = new Warrior("Brynn", 45, 40, 190);
+        list.insert(brynn);
+        System.out.println(list);
+
+        Warrior dolf = new Warrior("Dolf", 20, 65, 210);
+        list.insert(dolf);
+        System.out.println(list);
+
+        Warrior zuni = new Warrior("Zuni", 50, 35, 170);
+        list.insert(zuni);
+        System.out.println(list);
+    }
+}
+```
+
+The Warrior class has also been included, to make your job easier:
+```
+public class Warrior {
+    private String name;
+    private int speed;
+    private int strength;
+    private int hp;
+
+    public Warrior(String name, int speed, int str, int hp) {
+        this.name = name;
+        this.speed = speed;
+        this.strength = str;
+        this.hp = hp;
+    }
+
+    public String getName() { return this.name; }
+    public int getSpeed() { return this.speed; }
+    public int getStrength() { return this.strength; }
+    public int getHp() { return this.hp; }
+    public String toString() { return this.name + "(" + this.speed + ")"; }
+}
+```
+
+The `SortedDoublyLinkedList` class will implement the following interface, which is provided in this repository:
+```
+interface LinkedList {
+    void insert(Warrior warrior);
+    String toString();
+}
+```
+
+Implement the `SortedDoublyLinkedList` class such that the driver class code provided in `Lab04` compiles and runs with the following output:
+```
+[ Zuni(50) Brynn(45) Gurkh(40) Krogg(30) Dolf(20) ]
+```
+
+Your class will define an inner class, called `Node`, which will store the individual elements in your list.
+
+_**Note:** The warriors are separated by spaces in the `toString()` output to make your job easier.
+Of course, your program should work for any driver code._
+
+## Extra Challenge
+Note: This part of the lab assignment is optional. A bonus of 0.5 marks will be given to anyone who
+completes this correctly. However, it is recommended that you complete the base assignment, first!
+Imperfect lab solutions are not eligible for any bonus marks.
+
+Implement the `SortedDoublyLinkedList` class using generics so that any object can be inserted
+into the list. You will need to modify the driver class and the interface slightly to make this work.
+
+## Compiling and Running Your Program
+To compile and run your program, use the following command:
+`gradle run`
+
+If you want to see if your program passes the tests, i.e. is correct, use the following command:
+`gradle test`
+
+## Submission Instructions
+Modify the Java classes as described in this document, and add any additional classes you decide you want to write to complete this lab assignment.  Commit and push your code to this repository.
+
+Every lab assignment is due by the start of the following lab period, giving you an extra week to work on it.  Do not expect to continue to work on it during this next lab period, as the lab instructor will not permit that, since it would lead to you missing potential instructions/help for the next lab.
+
+This repository will be marked by the lab instructor at their convenience, but any changes made to this repository after the due date (described above) will not be considered.  Labs not submitted on time, with the exception of documented absences/illnesses or SAS accommodations, will not be accepted.
+
+**Note:**  Each lab is due by the _beginning_ of your next lab period.
+
+## Getting Help
+If you run into difficulty, you may wish to check out some of the following resources:
+- https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html - A series of tutorials for the Java programming language, focusing almost entirely on the features of Java
+- https://docs.oracle.com/en/java/javase/14/ - The standard documentation for Java classes, including methods that you can use, some of which will be discussed later in this course
+- http://stackoverflow.com/ - A forum for asking questions about programming. Chances are, someone else has asked the same question as you have, and some knowledgeable person has already answered it.  This might be a good time to use the ‘site:’ feature in Google!
+
+Of course, you can always ask the lab instructor for help! However, learning how to find the answers out for yourself is a skill that will pay off in the future, as solving your own problem is immediate (and satisfying)!
+
+## Academic Integrity
+Discussing strategies with your fellow students is acceptable, but once it is time to write the code you should do so on your own.  The instructor has learning goals planned for this course which are cumulative.  If you fail to learn some elements in this lab assignment, it most likely will affect your performance on higher-stakes assessments in the future.  You can also ask the lab instructor for help, but they won't directly solve your problems for you, but will rather point you in the right direction to find the solution yourself.
