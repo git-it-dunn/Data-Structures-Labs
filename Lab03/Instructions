@@ -1,0 +1,77 @@
+# Lab 03 - Java III
+
+_**Note:** Files already exist, and should be modified, for the following classes:
+- `src/main/java/Shape.java`
+- `src/main/java/Circle.java`
+- `src/main/java/Rectangle.java`_
+
+## Instructions
+In this lab assignment, we'll write another object-oriented program in Java.
+
+We'll create three classes:
+- `Shape`
+    - Constructor: Initialize the colour (`String`)
+    - `getArea()` (abstract) – returns the area of the shape
+    - `getPerimeter()` (abstract) – returns the perimeter of the shape
+    - `toString()` (abstract) – returns a string describing the shape
+- `Circle` (sub-class of `Shape`)
+    - Constructor: Initialize `radius` (`float`), `colour` (from `Shape`)
+    - Implement the abstract methods from `Shape`
+        - Use what you learned in school about area and perimeter of circles, OR http://www.coolmath.com/reference/circles-geometry if you forget
+- `Rectangle` (sub-class of `Shape`)
+    - Constructor: Initialize `length` (`float`), `width` (`float`), `colour` (from `Shape`)
+    - Implement the abstract methods from `Shape`
+        - Use what you learned in school about area and perimeter of rectangles, OR http://www.coolmath.com/reference/rectangles if you forget
+
+The following `main` method has been included in the provided `Lab03` class, which can be used to test your classes:
+```
+public static void main(String[] args) {
+    ArrayList<Shape> shapes = new ArrayList<>();
+    shapes.add(new Circle("Red", 2.0f));
+    shapes.add(new Rectangle("Blue", 1.5f, 3.0f));
+    for (Shape shape: shapes) {
+        System.out.println("");
+        System.out.println(shape.toString());
+        System.out.printf("Area: %0.2f\n", shape.getArea());
+        System.out.printf("Perimeter: %0.2f\n", shape.getPerimeter());
+    }
+}
+```
+
+Output from your program should look something like the following:
+```
+Red circle with radius 2.0
+Area: 12.57
+Perimeter: 12.57
+
+Blue rectangle with length 1.5 and width 3.0
+Area: 4.50
+Perimeter: 9.00
+```
+
+## Compiling and Running Your Program
+To compile and run your program, use the following command:
+`gradle run`
+
+If you want to see if your program passes the tests, i.e. is correct, use the following command:
+`gradle test`
+
+## Submission Instructions
+Modify the Java classes as described in this document, and add any additional classes you decide you want to write to complete this lab assignment.  Commit and push your code to this repository.
+
+Every lab assignment is due by the start of the following lab period, giving you an extra week to work on it.  Do not expect to continue to work on it during this next lab period, as the lab instructor will not permit that, since it would lead to you missing potential instructions/help for the next lab.
+
+This repository will be marked by the lab instructor at their convenience, but any changes made to this repository after the due date (described above) will not be considered.  Labs not submitted on time, with the exception of documented absences/illnesses or SAS accommodations, will not be accepted.
+
+**Note:**  Each lab is due by the _beginning_ of your next lab period.
+
+## Getting Help
+If you run into difficulty, you may wish to check out some of the following resources:
+- https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html - A series of tutorials for the Java programming language, focusing almost entirely on the features of Java
+- https://docs.oracle.com/en/java/javase/14/ - The standard documentation for Java classes, including methods that you can use, some of which will be discussed later in this course
+- http://stackoverflow.com/ - A forum for asking questions about programming. Chances are, someone else has asked the same question as you have, and some knowledgeable person has already answered it.  This might be a good time to use the ‘site:’ feature in Google!
+
+Of course, you can always ask the lab instructor for help! However, learning how to find the answers out for yourself is a skill that will pay off in the future, as solving your own problem is immediate (and satisfying)!
+
+## Academic Integrity
+Discussing strategies with your fellow students is acceptable, but once it is time to write the code you should do so on your own.  The instructor has learning goals planned for this course which are cumulative.  If you fail to learn some elements in this lab assignment, it most likely will affect your performance on higher-stakes assessments in the future.  You can also ask the lab instructor for help, but they won't directly solve your problems for you, but will rather point you in the right direction to find the solution yourself.
