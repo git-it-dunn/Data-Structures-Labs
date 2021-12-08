@@ -1,0 +1,92 @@
+# Lab 08 - Trees
+
+_**Note:** Files already exist for the following classes:_
+- `src/main/java/Lab08.java`
+- `src/main/java/TicTacToeTree.java`
+- `src/main/java/TicTacToeTreeNode.java`
+
+## Overview
+In this lab assignment, we will implement a tree data structure, and will use that tree to store the available moves in a tic tac toe game.
+
+## Instructions
+There has already been a `TicTacToeTreeNode` class defined, which stores the data for a single board position in tic tac toe.
+
+You will define a `TicTacToeTree` class, which will have several `static` functions:
+- `treeToString` - given a root `TicTacToeTreeNode`, it will convert the complete tree into a string, as shown in the example below
+- `nodeToString` - given a `TicTacToeTreeNode` and an integer `indentation`, it will convert the node (and all of its descendants) to a string, with `indentation` number of tabs before each line
+- `createNode` - given a `board` string and a `player` string (which will contain either `x` or `o`), will create a complete tree of all the possible moves for that player, given the starting board position, as described below.
+
+To make things simple, we will use a single (9-character) string to represent the current state of the game board.  Each character can be a space (if the board position is empty), an 'x' (if player X has moved there), or an 'o' (if the player O has moved there).
+
+Given a starting board position (which could be `'         '`, all spaces, to generate all possible moves), create a tree to represent all of the possible moves that can be made.  This will be recursive by nature.  For example, the string "x ox xo o" represents a game board where player X has just made a move.  All of the next moves will involve player O making a move.  There are three empty spaces, so there are three such moves.
+
+Once you have determined all of the next moves, determine the moves from that new board position (recursively).  Remember to change the player.  For example, if the current move was made by 'o', the next move will be made by 'x' (and vice versa).
+
+```
+public static void main(String[] args) {
+    String board = "x ox xo o";
+    TicTacToeTreeNode root = TicTacToeTree.createNode(board, "x");
+    System.out.print(TicTacToeTree.treeToString(root));
+}
+```
+
+The `TicTacToeTreeNode` and `TicTacToeTree` classes are all that you need to write for this lab assignment.
+
+For convenience, the function `makeMove` below is a function that generates a new string identical to `oldBoard`, except with the character at `position` replaced by `player`.
+
+```
+public static String makeMove(String oldBoard, int position, String player) {
+    return oldBoard.substring(0, position) + player + oldBoard.substring(position + 1);
+}
+```
+
+The driver code, above, should generate the following output:
+
+```
+'x ox xo o'
+    'xxox xo o'
+        'xxoxoxo o'
+            'xxoxoxoxo'
+        'xxox xooo'
+            'xxoxxxooo'
+    'x oxxxo o'
+        'xooxxxo o'
+            'xooxxxoxo'
+        'x oxxxooo'
+            'xxoxxxooo'
+    'x ox xoxo'
+        'xoox xoxo'
+            'xooxxxoxo'
+        'x oxoxoxo'
+            'xxoxoxoxo'
+```
+
+## Extra Challenge
+If you complete the lab assignment and still have time, try to augment the `TicTacToeTreeNode` class so that each node has a function `probabilityOfWinning` calculates the probability (a floating point number) of the current player (i.e. the player whose moves are described by the child nodes of the current node) winning.  The probability is simply calculated by determining how many of the final nodes are winning nodes for that player, and dividing by the total number of outcomes.
+
+## Compiling and Running Your Program
+To compile and run your program, use the following command:
+`gradle run`
+
+If you want to see if your program passes the tests, i.e. is correct, use the following command:
+`gradle test`
+
+## Submission Instructions
+Modify the Java classes as described in this document, and add any additional classes you decide you want to write to complete this lab assignment.  Commit and push your code to this repository.
+
+Every lab assignment is due by the start of the following lab period, giving you an extra week to work on it.  Do not expect to continue to work on it during this next lab period, as the lab instructor will not permit that, since it would lead to you missing potential instructions/help for the next lab.
+
+This repository will be marked by the lab instructor at their convenience, but any changes made to this repository after the due date (described above) will not be considered.  Labs not submitted on time, with the exception of documented absences/illnesses or SAS accommodations, will not be accepted.
+
+**Note:**  Each lab is due by the _beginning_ of your next lab period.
+
+## Getting Help
+If you run into difficulty, you may wish to check out some of the following resources:
+- https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html - A series of tutorials for the Java programming language, focusing almost entirely on the features of Java
+- https://docs.oracle.com/en/java/javase/14/ - The standard documentation for Java classes, including methods that you can use, some of which will be discussed later in this course
+- http://stackoverflow.com/ - A forum for asking questions about programming. Chances are, someone else has asked the same question as you have, and some knowledgeable person has already answered it.  This might be a good time to use the ‘site:’ feature in Google!
+
+Of course, you can always ask the lab instructor for help! However, learning how to find the answers out for yourself is a skill that will pay off in the future, as solving your own problem is immediate (and satisfying)!
+
+## Academic Integrity
+Discussing strategies with your fellow students is acceptable, but once it is time to write the code you should do so on your own.  The instructor has learning goals planned for this course which are cumulative.  If you fail to learn some elements in this lab assignment, it most likely will affect your performance on higher-stakes assessments in the future.  You can also ask the lab instructor for help, but they won't directly solve your problems for you, but will rather point you in the right direction to find the solution yourself.
