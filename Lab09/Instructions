@@ -1,0 +1,118 @@
+# Lab 09 - AVL Trees
+
+_**Note:** Files already exist for the following classes:_
+- `src/main/java/Lab09.java`
+- `src/main/java/AVLTree.java`
+- `src/main/java/AVLNode.java`
+
+## Overview
+In this lab assignment, we will implement the rebalancing behaviour in an AVL tree.  The code implementing much of the other behaviour has been provided.
+
+## Instructions
+This repository includes a driver class (`Lab09`), a class for the AVL tree (`AVLTree`), and a class for the AVL node (`AVLNode`).  There is an empty function, called `rebalance()`, that needs to be implemented.
+
+The `AVLNode` class includes a `getBalance()` method, which returns an integer.  If the integer is `-2` or less, the left node is out of balance.  If the integer is `+2` or more, the right node is out of balance.  When these two conditions occur, perform either a single or a double rotation (as described in the lecture notes and text book), as appropriate.
+
+The `rebalance()` method returns an `AVLNode` only when the rebalancing occurs on the root node.  The return value will be the new root node.  This is already handled by the existing code.  In all other cases, return `null`.
+
+A summary of rotations is given below.
+
+- Single, left rotation:
+
+![Single left rotation](images/single_rotation_left.png)
+
+- Single, right rotation:
+
+![Single right rotation](images/single_rotation_right.png)
+
+- Double, left rotation:
+
+![Double left rotation](images/double_rotation_left.png)
+
+- Double, right rotation:
+
+![Double right rotation](images/double_rotation_right.png)
+
+
+Output from the provided `Lab09` driver code:
+```
+Initial:
+null
+
+After insert 6:
+Balance: 0
+6
+
+After insert 7:
+Balance: 1
+        7
+6
+
+After insert 2:
+Balance: 0
+        7
+6
+        2
+
+After insert 1:
+Balance: -1
+        7
+6
+        2
+                1
+
+After insert 4:
+Balance: -1
+        7
+6
+                4
+        2
+                1
+
+double rotation, left
+After insert 3:
+Balance: 0
+                7
+        6
+4
+                3
+        2
+                1
+
+After insert 5:
+Balance: 0
+                7
+        6
+                5
+4
+                3
+        2
+                1
+```
+
+## Compiling and Running Your Program
+To compile and run your program, use the following command:
+`gradle run`
+
+If you want to see if your program passes the tests, i.e. is correct, use the following command:
+`gradle test`
+
+## Submission Instructions
+Modify the Java classes as described in this document, and add any additional classes you decide you want to write to complete this lab assignment.  Commit and push your code to this repository.
+
+Every lab assignment is due by the start of the following lab period, giving you an extra week to work on it.  Do not expect to continue to work on it during this next lab period, as the lab instructor will not permit that, since it would lead to you missing potential instructions/help for the next lab.
+
+This repository will be marked by the lab instructor at their convenience, but any changes made to this repository after the due date (described above) will not be considered.  Labs not submitted on time, with the exception of documented absences/illnesses or SAS accommodations, will not be accepted.
+
+**Note:**  Each lab is due by the _beginning_ of your next lab period.
+
+## Getting Help
+If you run into difficulty, you may wish to check out some of the following resources:
+- https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html - A series of tutorials for the Java programming language, focusing almost entirely on the features of Java
+- https://docs.oracle.com/en/java/javase/14/ - The standard documentation for Java classes, including methods that you can use, some of which will be discussed later in this course
+- http://stackoverflow.com/ - A forum for asking questions about programming. Chances are, someone else has asked the same question as you have, and some knowledgeable person has already answered it.  This might be a good time to use the ‘site:’ feature in Google!
+
+Of course, you can always ask the lab instructor for help! However, learning how to find the answers out for yourself is a skill that will pay off in the future, as solving your own problem is immediate (and satisfying)!
+
+## Academic Integrity
+Discussing strategies with your fellow students is acceptable, but once it is time to write the code you should do so on your own.  The instructor has learning goals planned for this course which are cumulative.  If you fail to learn some elements in this lab assignment, it most likely will affect your performance on higher-stakes assessments in the future.  You can also ask the lab instructor for help, but they won't directly solve your problems for you, but will rather point you in the right direction to find the solution yourself.
